@@ -48,6 +48,28 @@ app.post('/api/v1/tours', (req, res) => {
            // res.send('Done') // to end the res cycle
 })
 
+app.get('/api/v1/tours/:id', (req, res) => {  // ? for optional
+           // console.log(req.body) // cuz of middleware body is accessible
+           console.log(req.params)
+           
+           const id = req.params.id * 1
+           if (id > tours.length) {
+                      return res.status(404).json({
+                                 status: 'fail',
+                                 message: 'Invalid Id'
+                      })
+           }
+           
+           const tour = tours.find(el => el.id === id)
+           res.status(200).json({
+                      status: 'success',
+                      data: {
+                                 tour
+                      }
+           })
+})
+
+
 const port = 3000
 app.listen(port , () => {
            console.log(`App running on port ${port}...`);
