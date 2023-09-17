@@ -5,6 +5,16 @@ const app = express()
 
 app.use(express.json()) //middleware in between req and res.
 
+app.use((req, res, next) => {
+           console.log('Hello fromm the middleware💀 ');
+           next();
+}) // Default applies to each and every URL 
+
+app.use((req, res, next) => {
+           req.requestTime = new Date().toISOString();
+           next();
+})
+
 // app.get('/', (req, res) => {
 //            res.status(200).json(
 //                       {message: 'Hello from the server side!',
@@ -22,6 +32,7 @@ const tours = JSON.parse(fs.readFileSync(`${__dirname}/dev-data/data/tours-simpl
 const getAllTours = (req, res) => {
            res.status(200).json({
                       status: 'success',
+                      requestAt: req.requestTime,
                       result: tours.length,
                       data: {
                                  tours: tours
@@ -98,16 +109,6 @@ const deleteTour = (req, res) => {
                       data: null
            })
 }
-
-// app.get('/api/v1/tours', getAllTours)
-
-// app.post('/api/v1/tours', createTour)
-
-// app.get('/api/v1/tours/:id', getTourById)
-
-// app.patch('/api/v1/tours/:id', updateTour)
-
-// app.delete('/api/v1/tours/:id', deleteTour)
 
 app.route('/api/v1/tours').get(getAllTours).post(createTour)
 app.route('/api/v1/tours/:id').get(getTourById).patch(updateTour).delete(deleteTour)
