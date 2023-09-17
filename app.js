@@ -1,5 +1,6 @@
 const express = require('express');
 const fs = require('fs')
+const morgan = require('morgan')
 
 const app = express()
 
@@ -15,18 +16,11 @@ app.use((req, res, next) => {
            next();
 })
 
-// app.get('/', (req, res) => {
-//            res.status(200).json(
-//                       {message: 'Hello from the server side!',
-//            app: 'Notours'})
-// })
+app.use(morgan('dev'));
 
-// app.post('/', (req, res) => {
-//            res.send('You can post to this endpoint..')
-// })
+
 
 // Good practise to mention version of api: v1/v2 etc
-
 const tours = JSON.parse(fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`))
 
 const getAllTours = (req, res) => {
