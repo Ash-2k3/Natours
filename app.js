@@ -18,8 +18,6 @@ app.use((req, res, next) => {
 
 app.use(morgan('dev'));
 
-
-
 // Good practise to mention version of api: v1/v2 etc
 const tours = JSON.parse(fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`))
 
@@ -104,10 +102,45 @@ const deleteTour = (req, res) => {
            })
 }
 
+const getAllUsers = (req, res) => {
+           res.status(500).json({
+                      status: 'error',
+                      message: 'This route is not yet defined'
+           })
+}
+
+const getUser = (req, res) => {
+           res.status(500).json({
+                      status: 'error',
+                      message: 'This route is not yet defined'
+           })
+}
+
+const createUser = (req, res) => {
+           res.status(500).json({
+                      status: 'error',
+                      message: 'This route is not yet defined'
+           })
+}
+
+const updateUser = (req, res) => {
+           res.status(500).json({
+                      status: 'error',
+                      message: 'This route is not yet defined'
+           })
+}
+
+const deleteUser = (req, res) => {
+           res.status(500).json({
+                      status: 'error',
+                      message: 'This route is not yet defined'
+           })
+}
+
 app.route('/api/v1/tours').get(getAllTours).post(createTour)
 app.route('/api/v1/tours/:id').get(getTourById).patch(updateTour).delete(deleteTour)
-
-
+app.route('/api/v1/users').get(getAllUsers).post(createUser)
+app.route('/api/v1/users/:id').get(getUser).patch(updateUser).delete(deleteUser)
 const port = 3000
 app.listen(port , () => {
            console.log(`App running on port ${port}...`);
