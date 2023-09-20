@@ -9,7 +9,7 @@ router.param('id', (req, res, next, val) => {
 })
 
 // Mounting Routes
-router.route('/').get(tourController.getAllTours).post(tourController.createTour);
+router.route('/').get(tourController.getAllTours).post(tourController.checkBody, tourController.createTour);
 router.route('/:id').get(tourController.getTourById).patch(tourController.updateTour).delete(tourController.deleteTour);
 
 module.exports = router;
