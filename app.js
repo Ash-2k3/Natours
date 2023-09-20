@@ -137,12 +137,19 @@ const deleteUser = (req, res) => {
            })
 }
 
-app.route('/api/v1/tours').get(getAllTours).post(createTour)
-app.route('/api/v1/tours/:id').get(getTourById).patch(updateTour).delete(deleteTour)
+const tourRouter = express.Router()
+const userRouter = express.Router()
+
+app.use('/api/v1/tours', tourRouter) //Sub app
+app.use('/api/v1/users',userRouter); // This concept is called mounting routers
+
+tourRouter.route('/').get(getAllTours).post(createTour)
+tourRouter.route('/:id').get(getTourById).patch(updateTour).delete(deleteTour)
+
+ 
 app.route('/api/v1/users').get(getAllUsers).post(createUser)
 app.route('/api/v1/users/:id').get(getUser).patch(updateUser).delete(deleteUser)
 const port = 3000
 app.listen(port , () => {
            console.log(`App running on port ${port}...`);
 });
-
