@@ -4,8 +4,8 @@ const tourRouter = require('./routes/tourRouter')
 const userRouter = require('./routes/userRouter')
 
 const app = express()
-
 app.use(express.json()) //middleware in between req and res.
+app.use(express.static(`${__dirname}/public`))
 
 app.use((req, res, next) => {
            console.log('Hello fromm the middleware💀 ');
