@@ -1,9 +1,15 @@
+/**
+ * In app.js, we mostly tend to store the code related
+ * to express. In most of the cases, we app.js is the entry
+ * point of server side code.
+ */
+
 const express = require('express');
 const morgan = require('morgan')
 const tourRouter = require('./routes/tourRouter')
 const userRouter = require('./routes/userRouter')
 
-const app = express()
+const app = express();
 app.use(express.json()) //middleware in between req and res.
 app.use(express.static(`${__dirname}/public`))
 
