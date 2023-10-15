@@ -24,6 +24,39 @@ mongoose.connect(DB, {   // Connecting the application to the hosted DB
   console.log('CONNECTION ESTABLISHED WITH MONGOOSE')
 });
 
+// Model: Blueprint of documents. To perform CRUD we need models, for models we need schema we need schema to describe data. default value etc
+
+const tourSchema = new mongoose.Schema({ // Specify the datatypes and validation for our model.
+  name: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  rating: {
+    type: Number,
+    default: 4.5
+  },
+  price: {
+    type: Number,
+    required: [true, 'A tour must have a price']
+  }
+});
+
+const Tour = mongoose.model('Tour', tourSchema)
+
+const testTour = new Tour({ // Document instance
+  name: 'The Forest Hiker',
+  rating: 4.7,
+  price: 497
+})
+
+testTour.save() // Save the database instance in database, returns a promise
+
+testTour.save().then(doc => {
+  console.log(doc)
+}).catch(err => {
+  console.log('Errororororororororororo')
+})
 
 const port = 3000;
 app.listen(port, () => {
