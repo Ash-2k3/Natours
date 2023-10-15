@@ -45,7 +45,7 @@ const tourSchema = new mongoose.Schema({ // Specify the datatypes and validation
 const Tour = mongoose.model('Tour', tourSchema)
 
 const testTour = new Tour({ // Document instance
-  name: 'The Forest Hiker',
+  name: 'The Forest Hiking',
   rating: 4.7,
   price: 497
 })
@@ -53,9 +53,9 @@ const testTour = new Tour({ // Document instance
 testTour.save() // Save the database instance in database, returns a promise
 
 testTour.save().then(doc => {
-  console.log(doc)
+  console.log(doc);
 }).catch(err => {
-  console.log('Errororororororororororo')
+  console.log('Errororororororororororo', err)
 })
 
 const port = 3000;
