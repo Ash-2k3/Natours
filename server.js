@@ -55,10 +55,14 @@ testTour.save() // Save the database instance in database, returns a promise
 testTour.save().then(doc => {
   console.log(doc);
 }).catch(err => {
-  console.log('Errororororororororororo', err)
+  console.log('Errororororororororororo', err);
 })
 
 const port = 3000;
 app.listen(port, () => {
   console.log(`App running on port ${port}...`);
 });
+
+// Application logic is the logic which makes application run, concerned about managing req and responses, bridge between model and view layers
+
+// Business logic is the logic that actually solves the problem, directly related to business rules, how the business works and business needs.
