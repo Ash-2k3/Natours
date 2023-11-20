@@ -24,7 +24,7 @@ mongoose.connect(DB, {   // Connecting the application to the hosted DB
   console.log('CONNECTION ESTABLISHED WITH MONGOOSE')
 });
 
-// Model: Blueprint of documents. To perform CRUD we need models, for models we need schema we need schema to describe data. default value etc
+// Model: Blueprint of documents. To perform CRUD we need models, for models  we need schema to describe data. default value etc
 
 const port = 3000;
 app.listen(port, () => {
