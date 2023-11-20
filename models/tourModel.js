@@ -15,7 +15,7 @@ const tourSchema = new mongoose.Schema({ // Specify the datatypes and validation
              required: [true, 'A tour must have a price']
            }
          });
-         
-         const Tour = mongoose.model('Tour', tourSchema)
+
+const Tour = mongoose.model('Tour', tourSchema)
 
 module.exports = Tour
