@@ -58,9 +58,7 @@ exports.getTourById = async (req, res) => {  // ? for optional
 }
 
 exports.updateTour = async (req, res) => {
-           console.log('Update method is being called');
            try {      
-                      console.log(req.body)
                       const tour = await Tour.findByIdAndUpdate(
                                  req.params.id,
                                  req.body, {
@@ -80,16 +78,22 @@ exports.updateTour = async (req, res) => {
            }
 }
 
-exports.deleteTour = (req, res) => {
+exports.deleteTour = async (req, res) => {
+           try {
+                      const tour = await Tour.findByIdAndDelete(req.params.id);
+                      res.status(204).json({
+                      status: 'success',
+                      data: null
+                      })
+           } catch (err) {
+                      res.status(404).json({
+                                                       status: 'fail',
+                                                       message: err
+                                            })
+           }
            const id = req.params.id * 1
            // if (id > tours.length) {
-           //            return res.status(404).json({
-           //                       status: 'fail',
-           //                       message: 'Invalid Id'
-           //            })
+           //            
            // }
-           // res.status(204).json({
-           //            status: 'success',
-           //            data: null
-           // })
+           
 }
