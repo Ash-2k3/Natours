@@ -1,6 +1,6 @@
 /**
  * In app.js, we mostly tend to store the code related
- * to express. In most of the cases, we app.js is the entry
+ * to express. In most of the cases, app.js is the entry
  * point of server side code.
  */
 
